@@ -1,0 +1,28 @@
+module FA(s,cy,a,b,c);
+input a,b,c;
+output s,cy;
+assign s=a^b^c;
+assign cy=(a&b)|((a^b)&c);
+endmodule
+module Bit4adder(s0,s1,s2,s3,cout,cin,a0,a1,a2,a3,b0,b1,b2,b3);
+input cin,a0,a1,a2,a3,b0,b1,b2,b3;
+output s0,s1,s2,s3,cout;
+wire c0,c1,c2;
+FA FA0(s0,c0,a0,b0,cin);
+FA FA1(s1,c1,a1,b1,c0);
+FA FA2(s2,c2,a2,b2,c1);
+FA FA3(s3,cout,c2,a3,b3);
+endmodule
+NET "s0"             LOC = P46   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "s1"             LOC = P47   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "s2"             LOC = P48   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "s3"             LOC = P49   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "cout"             LOC = P50   | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "a0"        LOC = P70   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "a1"        LOC = P69   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "a2"        LOC = P68   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "a3"        LOC = P64   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "b0"        LOC = P63   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "b1"        LOC = P60   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "b2"        LOC = P59   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
+    NET "b3"        LOC = P58   | PULLUP  | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 12;
